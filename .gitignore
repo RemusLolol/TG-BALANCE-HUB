@@ -83,3 +83,4 @@ logs/
 # Secrets
 secrets/
 !secrets/.gitkeep
+.env

@@ -9,7 +9,7 @@ services:
       POSTGRES_PASSWORD: ${DB_PASSWORD}
       POSTGRES_DB: ${DB_NAME}
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql/data  # ✅ Исправлено: pgdata:/path
     networks:
       - internal
     healthcheck:
@@ -44,7 +44,7 @@ services:
       - internal
     restart: unless-stopped
     volumes:
-      - ./src:/app/src
+      - ./src:/app/src:ro  # :ro = read-only для безопасности
 
   web:
     build:
@@ -64,7 +64,7 @@ services:
       - public
     restart: unless-stopped
     volumes:
-      - ./src:/app/src
+      - ./src:/app/src:ro
 
   worker:
     build:
@@ -81,10 +81,10 @@ services:
       - internal
     restart: unless-stopped
     volumes:
-      - ./src:/app/src
+      - ./src:/app/src:ro
 
 volumes:
-  pg
+  pgdata:  # ✅ Исправлено: объявление именованного тома
 
 networks:
   internal:
