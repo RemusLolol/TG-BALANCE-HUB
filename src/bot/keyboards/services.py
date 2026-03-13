@@ -4,18 +4,10 @@ from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 def get_services_keyboard() -> InlineKeyboardMarkup:
     """Клавиатура с выбором сервисов"""
     keyboard = InlineKeyboardMarkup(inline_keyboard=[
-        [
-            InlineKeyboardButton(text="🌊 DigitalOcean", callback_data="add_service_digitalocean"),
-        ],
-        [
-            InlineKeyboardButton(text="☁️ AWS", callback_data="add_service_aws"),
-        ],
-        [
-            InlineKeyboardButton(text="🔷 Hetzner", callback_data="add_service_hetzner"),
-        ],
-        [
-            InlineKeyboardButton(text="❌ Отмена", callback_data="add_service_cancel"),
-        ],
+        [InlineKeyboardButton(text="🌊 DigitalOcean", callback_data="add_service_digitalocean")],
+        [InlineKeyboardButton(text="☁️ AWS", callback_data="add_service_aws")],
+        [InlineKeyboardButton(text="🔷 Hetzner", callback_data="add_service_hetzner")],
+        [InlineKeyboardButton(text="❌ Отмена", callback_data="add_service_cancel")],
     ])
     return keyboard
 

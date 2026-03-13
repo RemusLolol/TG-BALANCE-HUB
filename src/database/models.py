@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Float, DateTime, Boolean, ForeignKey, JSON
+from sqlalchemy import Column, Integer, String, Float, DateTime, Boolean, ForeignKey, JSON, BigInteger
 from sqlalchemy.orm import declarative_base, relationship
 from datetime import datetime
 
@@ -22,10 +22,10 @@ class Service(Base):
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     service_name = Column(String, nullable=False)
-    connection_type = Column(String, nullable=False)  # api, oauth, email
-    credentials = Column(JSON, nullable=False)  # Зашифрованные данные
+    connection_type = Column(String, nullable=False)
+    credentials = Column(JSON, nullable=False)
     is_active = Column(Boolean, default=True)
-    check_interval = Column(Integer, default=3600)  # секунды
+    check_interval = Column(Integer, default=3600)
     created_at = Column(DateTime, default=datetime.utcnow)
     last_check = Column(DateTime, nullable=True)
     
